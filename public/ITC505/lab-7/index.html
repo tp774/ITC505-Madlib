@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mystical Realm Adventure Mad Lib</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #8b4513;
+            --background-color: #f4e4d0;
+            --text-color: #2c3e50;
+            --accent-color: #5d3000;
+        }
+ 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Merriweather', serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 1rem;
+            background-image: url('https://ideogram.ai/assets/image/lossless/response/medieval-fantasy-landscape');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            padding: 2rem;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 2px solid var(--primary-color);
+            border-radius: 5px;
+            font-family: 'Merriweather', serif;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 5px rgba(93, 48, 0, 0.3);
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Merriweather', serif;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        button:hover {
+            background-color: var(--accent-color);
+        }
+
+        #lastModified {
+            display: block;
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: var(--primary-color);
+        }
+
+        .addendum {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            padding: 2rem;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .addendum h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .addendum ul {
+            list-style-type: none;
+            padding-left: 0;
+            text-align: left;
+        }
+
+        .addendum li {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .addendum li::before {
+            content: '✦';
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1> Mystical Realm Adventure Mad Lib!</h1>
+        
+        <form action="/ITC505/lab-7/index.html" method="post">
+            <div class="form-group">
+                <label for="magicalCreature"> Enter magical creatures (plural):</label>
+                <input type="text" id="magicalCreature" name="magicalCreature" required placeholder="e.g., elven warriors">
+            </div>
+
+            <div class="form-group">
+                <label for="enchantedObject"> Enter an enchanted object:</label>
+                <input type="text" id="enchantedObject" name="enchantedObject" required placeholder="e.g., crystal staff">
+            </div>
+
+            <div class="form-group">
+                <label for="heroAction"> Enter a heroic action verb:</label>
+                <input type="text" id="heroAction" name="heroAction" required placeholder="e.g., vanquish">
+            </div>
+
+            <div class="form-group">
+                <label for="mysteriousAdverb"> Enter a mysterious adverb:</label>
+                <input type="text" id="mysteriousAdverb" name="mysteriousAdverb" required placeholder="e.g., silently">
+            </div>
+
+            <div class="form-group">
+                <label for="legendaryLocation"> Enter a legendary location:</label>
+                <input type="text" id="legendaryLocation" name="legendaryLocation" required placeholder="e.g., Shadowmere Kingdom">
+            </div>
+
+            <button type="submit">Create My Magical Quest! 🧙‍♂️</button>
+        </form>
+
+        <span id="lastModified"></span>
+    </div>
+
+    <div class="addendum">
+        <h2>Addendum: Creative Process and Design Philosophy</h2>
+        <ul>
+            <li>
+                <strong>Narrative Depth:</strong> Designed to transport users into a rich, imaginative fantasy world with carefully curated language.
+            </li>
+            <li>
+                <strong>Interactive Storytelling:</strong> Implemented a dynamic narrative generation system that encourages creative exploration.
+            </li>
+            <li>
+                <strong>Magical User Interface:</strong> Developed an interface that captures the whimsy and wonder of mythical storytelling.
+            </li>
+            <li>
+                <strong>Emotional Engagement:</strong> Created input prompts that spark imagination and invite playful participation.
+            </li>
+            <li>
+                <strong>Adaptive Storytelling:</strong> Constructed a flexible narrative framework that transforms user inputs into unique magical adventures.
+            </li>
+            <li>
+                <strong>Visual Metaphors:</strong> Employed fantasy-themed iconography to enhance the immersive storytelling experience.
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        document.getElementById('lastModified').textContent = 'Last updated: ' + new Date().toLocaleDateString();
+    </script>
+</body>
+</html>
