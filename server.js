@@ -1,168 +1,153 @@
-const express = require('express')
-const logger = require('morgan')
-const path = require('path')
-const server = express()
+const express = require('express');
+const logger = require('morgan');
+const path = require('path');
+const server = express();
 
-// Middleware
-server.use(express.urlencoded({'extended': true}))
-server.use(logger('dev')) 
+// Middleware to handle form data
+server.use(express.urlencoded({ extended: true }));
+server.use(logger('dev'));
 
-server.get('/do_a_random', (req, res) => {
-  res.send(`Your magical number is: ${Math.floor(Math.random() * 100) + 1}`)
-})
+// Serve static files (images, CSS, etc.)
+const publicPath = path.join(__dirname, 'public');
+server.use(express.static(publicPath)); // Serve the entire 'public' directory
 
-// Mad Lib route handler with styled response
-server.post('/ITC505/lab-7/index.html', (req, res) => {
-    const { magicalCreature, enchantedObject, heroAction, mysteriousAdverb, legendaryLocation } = req.body;
-    
-    // Check if all fields are filled
-    if (!magicalCreature || !enchantedObject || !heroAction || !mysteriousAdverb || !legendaryLocation) {
+// Route to serve the form page directly
+server.get('/pirate-adventure', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// Mad Lib route handler for form submission
+server.post('/pirate-adventure', (req, res) => {
+    const { pirateShip, treasureItem, actionVerb, seaAdverb, hiddenIsland } = req.body;
+
+    if (!pirateShip || !treasureItem || !actionVerb || !seaAdverb || !hiddenIsland) {
         res.send(`
             <!DOCTYPE html>
             <html lang="en">
-
             <head>
                 <meta charset="UTF-8">
-                <title>Magical Quest Error</title>
-                <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+                <title>Pirate Quest Error</title>
                 <style>
                     body {
-                        font-family: 'Merriweather', serif;
-                        background-image: url('https://ideogram.ai/assets/image/lossless/response/medieval-fantasy-landscape');
-                        background-size: cover;
-                        background-position: center;
-                        background-attachment: fixed;
+                        font-family: 'Arial', sans-serif;
+                        background-color: #f4f4f9;
                         display: flex;
                         justify-content: center;
                         align-items: center;
                         height: 100vh;
                         margin: 0;
                         text-align: center;
-                        color: #2c3e50;
+                        color: #333;
                     }
                     .error-container {
-                        background: rgba(255,255,255,0.9);
-                        border-radius: 15px;
-                        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+                        background: #fff;
+                        border-radius: 8px;
                         padding: 2rem;
-                        max-width: 500px;
+                        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
                     }
-                    h1 { color: #8b4513; }
+                    h1 {
+                        color: #d9534f;
+                    }
                     a {
                         display: inline-block;
-                        background-color: #8b4513;
+                        background-color: #0275d8;
                         color: white;
                         text-decoration: none;
                         padding: 10px 20px;
-                        border-radius: 8px;
+                        border-radius: 5px;
                         margin-top: 1rem;
-                        transition: background-color 0.3s ease;
+                        font-weight: bold;
                     }
                     a:hover {
-                        background-color: #5d3000;
+                        background-color: #025aa5;
                     }
                 </style>
             </head>
             <body>
                 <div class="error-container">
-                    <h1>🔮 Quest Incomplete!</h1>
-                    <p>Please fill out ALL magical quest details!</p>
-                    <a href="/ITC505/lab-7/index.html">Return to Realm</a>
+                    <h1>🏴‍☠️ Quest Incomplete!</h1>
+                    <p>Please fill out ALL pirate adventure details!</p>
+                    <a href="/pirate-adventure">Return to Pirate Ship</a>
                 </div>
             </body>
             </html>
         `);
         return;
     }
-    
-    // Create the styled mad lib story response
+
     res.send(`
         <!DOCTYPE html>
         <html lang="en">
         <head>
             <meta charset="UTF-8">
-            <title>Your Mystical Quest</title>
-            <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+            <title>Your Pirate Adventure</title>
             <style>
                 body {
-                    font-family: 'Merriweather', serif;
-                    background-image: url('https://ideogram.ai/assets/image/lossless/response/medieval-fantasy-landscape');
-                    background-size: cover;
-                    background-position: center;
-                    background-attachment: fixed;
+                    font-family: 'Arial', sans-serif;
+                    background-color: #f0f8ff;
                     display: flex;
                     justify-content: center;
                     align-items: center;
                     min-height: 100vh;
                     margin: 0;
-                    padding: 1rem;
-                    color: #2c3e50;
+                    text-align: center;
+                    color: #333;
                 }
                 .story-container {
-                    background: rgba(255,255,255,0.9);
-                    border-radius: 15px;
-                    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+                    background: #fff;
+                    border-radius: 8px;
                     padding: 2rem;
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
                     max-width: 600px;
-                    text-align: center;
-                    animation: fadeIn 0.5s ease-out;
-                }
-                @keyframes fadeIn {
-                    from { opacity: 0; transform: translateY(20px); }
-                    to { opacity: 1; transform: translateY(0); }
                 }
                 h1 {
-                    color: #8b4513;
-                    margin-bottom: 1rem;
+                    color: #0275d8;
                 }
                 .story-text {
-                    line-height: 1.6;
+                    line-height: 1.8;
+                    margin-top: 1rem;
                 }
-                .highlighted {
-                    color: #8b4513;
-                    font-weight: bold;
+                strong {
+                    color: #d9534f;
                 }
-                .action-link {
+                a {
                     display: inline-block;
-                    background-color: #8b4513;
+                    background-color: #0275d8;
                     color: white;
                     text-decoration: none;
                     padding: 10px 20px;
-                    border-radius: 8px;
+                    border-radius: 5px;
                     margin-top: 1rem;
-                    transition: background-color 0.3s ease;
+                    font-weight: bold;
                 }
-                .action-link:hover {
-                    background-color: #5d3000;
+                a:hover {
+                    background-color: #025aa5;
                 }
             </style>
         </head>
         <body>
             <div class="story-container">
-                <h1>🏰 Your Legendary Quest Revealed!</h1>
+                <h1>🏴‍☠️ Your Pirate Adventure Awaits!</h1>
                 <div class="story-text">
                     <p>
-                        In the ancient realm of <span class="highlighted">${legendaryLocation}</span>, a fellowship of 
-                        <span class="highlighted">${magicalCreature}</span> embarked on a perilous journey. Armed with a mystical 
-                        <span class="highlighted">${enchantedObject}</span>, they vowed to 
-                        <span class="highlighted">${heroAction}</span> 
-                        <span class="highlighted">${mysteriousAdverb}</span>. 
-                        Little did they know that their quest would become a legend whispered through generations!
+                        Captain of the mighty <strong>${pirateShip}</strong>, you sail the seven seas in search of the most
+                        coveted treasure: the <strong>${treasureItem}</strong>! 
+                        As you <strong>${actionVerb}</strong> across the waves, the sea <strong>${seaAdverb}</strong>
+                        crashes against the sides of your ship.
                     </p>
+                    <p>
+                        Soon, you spot a hidden island, <strong>${hiddenIsland}</strong>, where the treasure is said to lie.
+                    </p>
+                    <a href="/ITC505/Lab-7/index.html">Go on another adventure!</a>
                 </div>
-                <a href="/ITC505/lab-7/index.html" class="action-link">Begin Another Mystical Journey 🧙‍♂️</a>
             </div>
         </body>
         </html>
     `);
 });
 
-const publicServedFilesPath = path.join(__dirname, 'public')
-server.use(express.static(publicServedFilesPath))
-
-let port = 80
-if (process.argv[2] === 'local') {
-    port = 8080
-}
-
-server.listen(port, () => console.log('Ready on localhost!'))
+// Start the server
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+});
