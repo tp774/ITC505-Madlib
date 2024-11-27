@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mystical Realm Adventure Mad Lib</title>
+    <title>Pirate Treasure Hunt Mad Lib</title>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #8b4513;
-            --background-color: #f4e4d0;
+            --primary-color: #d2691e;
+            --background-color: #fff5e6;
             --text-color: #2c3e50;
-            --accent-color: #5d3000;
+            --accent-color: #8b0000;
+            --highlight-color: #f4a300;
         }
  
         * {
@@ -25,7 +26,7 @@
             color: var(--text-color);
             line-height: 1.6;
             padding: 1rem;
-            background-image: url('https://ideogram.ai/assets/image/lossless/response/medieval-fantasy-landscape');
+            background-image: url('https://www.example.com/pirate-sea.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -46,7 +47,7 @@
         h1 {
             color: var(--primary-color);
             margin-bottom: 1.5rem;
-            font-size: 2rem;
+            font-size: 2.5rem;
         }
 
         .form-group {
@@ -70,8 +71,8 @@
 
         .form-group input:focus {
             outline: none;
-            border-color: var(--accent-color);
-            box-shadow: 0 0 5px rgba(93, 48, 0, 0.3);
+            border-color: var(--highlight-color);
+            box-shadow: 0 0 5px rgba(244, 163, 0, 0.3);
         }
 
         button {
@@ -127,7 +128,7 @@
         }
 
         .addendum li::before {
-            content: '✦';
+            content: '⚓';
             color: var(--primary-color);
             position: absolute;
             left: 0;
@@ -136,60 +137,60 @@
 </head>
 <body>
     <div class="container">
-        <h1> Mystical Realm Adventure Mad Lib!</h1>
+        <h1>Pirate Treasure Hunt Mad Lib</h1>
         
-        <form action="/ITC505/lab-7/index.html" method="post">
+        <form action="/pirate-adventure/index.html" method="post">
             <div class="form-group">
-                <label for="magicalCreature"> Enter magical creatures (plural):</label>
-                <input type="text" id="magicalCreature" name="magicalCreature" required placeholder="e.g., elven warriors">
+                <label for="pirateShip">Enter the name of a pirate ship:</label>
+                <input type="text" id="pirateShip" name="pirateShip" required placeholder="e.g., The Black Pearl">
             </div>
 
             <div class="form-group">
-                <label for="enchantedObject"> Enter an enchanted object:</label>
-                <input type="text" id="enchantedObject" name="enchantedObject" required placeholder="e.g., crystal staff">
+                <label for="treasureItem">Enter a treasure item:</label>
+                <input type="text" id="treasureItem" name="treasureItem" required placeholder="e.g., golden chalice">
             </div>
 
             <div class="form-group">
-                <label for="heroAction"> Enter a heroic action verb:</label>
-                <input type="text" id="heroAction" name="heroAction" required placeholder="e.g., vanquish">
+                <label for="actionVerb">Enter an action verb (adventurous):</label>
+                <input type="text" id="actionVerb" name="actionVerb" required placeholder="e.g., plunder">
             </div>
 
             <div class="form-group">
-                <label for="mysteriousAdverb"> Enter a mysterious adverb:</label>
-                <input type="text" id="mysteriousAdverb" name="mysteriousAdverb" required placeholder="e.g., silently">
+                <label for="seaAdverb">Enter a sea-related adverb:</label>
+                <input type="text" id="seaAdverb" name="seaAdverb" required placeholder="e.g., wildly">
             </div>
 
             <div class="form-group">
-                <label for="legendaryLocation"> Enter a legendary location:</label>
-                <input type="text" id="legendaryLocation" name="legendaryLocation" required placeholder="e.g., Shadowmere Kingdom">
+                <label for="hiddenIsland">Enter the name of a hidden island:</label>
+                <input type="text" id="hiddenIsland" name="hiddenIsland" required placeholder="e.g., Skull Island">
             </div>
 
-            <button type="submit">Create My Magical Quest! 🧙‍♂️</button>
+            <button type="submit">Create My Pirate Adventure! 🏴‍☠️</button>
         </form>
 
         <span id="lastModified"></span>
     </div>
 
     <div class="addendum">
-        <h2>Addendum: Creative Process and Design Philosophy</h2>
+        <h2>Behind the Scenes: Pirate Adventure Design</h2>
         <ul>
             <li>
-                <strong>Narrative Depth:</strong> Designed to transport users into a rich, imaginative fantasy world with carefully curated language.
+                <strong>High Seas Adventure:</strong> Crafted a pirate-themed experience to immerse users in a treasure hunt.
             </li>
             <li>
-                <strong>Interactive Storytelling:</strong> Implemented a dynamic narrative generation system that encourages creative exploration.
+                <strong>Interactive Storytelling:</strong> Designed a dynamic Mad Lib system that lets users contribute to the plot.
             </li>
             <li>
-                <strong>Magical User Interface:</strong> Developed an interface that captures the whimsy and wonder of mythical storytelling.
+                <strong>Treasure Hunt Feel:</strong> Themed user inputs to match the adventurous and dangerous world of pirates.
             </li>
             <li>
-                <strong>Emotional Engagement:</strong> Created input prompts that spark imagination and invite playful participation.
+                <strong>Emotionally Engaging:</strong> Created an exciting and whimsical experience, drawing users into the world of the high seas.
             </li>
             <li>
-                <strong>Adaptive Storytelling:</strong> Constructed a flexible narrative framework that transforms user inputs into unique magical adventures.
+                <strong>Adaptive Storyline:</strong> The Mad Lib narrative adapts to users' choices, ensuring each pirate story is unique.
             </li>
             <li>
-                <strong>Visual Metaphors:</strong> Employed fantasy-themed iconography to enhance the immersive storytelling experience.
+                <strong>Visual Immersion:</strong> Enhanced the interface with a pirate aesthetic, evoking the feeling of navigating treacherous waters.
             </li>
         </ul>
     </div>
