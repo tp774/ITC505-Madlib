@@ -13,7 +13,7 @@ server.use(express.static(publicPath)); // Serve the entire 'public' directory
 
 // Route to serve the form page directly
 server.get('/pirate-adventure', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(publicPath, 'index.html'));
 });
 
 // Mad Lib route handler for form submission
@@ -27,7 +27,9 @@ server.post('/pirate-adventure', (req, res) => {
             <head>
                 <meta charset="UTF-8">
                 <title>Pirate Quest Error</title>
-                <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+                <style>
+                    /* Add internal styles here */
+                </style>
             </head>
             <body>
                 <div>
@@ -47,7 +49,9 @@ server.post('/pirate-adventure', (req, res) => {
         <head>
             <meta charset="UTF-8">
             <title>Your Pirate Adventure</title>
-            <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+            <style>
+                /* Add internal styles here */
+            </style>
         </head>
         <body>
             <div>
@@ -61,7 +65,7 @@ server.post('/pirate-adventure', (req, res) => {
                 <p>
                     Soon, you spot a hidden island, <strong>${hiddenIsland}</strong>, where the treasure is said to lie.
                 </p>
-                <a class="action-link" href="/ITC505/Lab-7/index.html">Go on another adventure!</a>
+                <a href="/pirate-adventure">Go on another adventure!</a>
             </div>
         </body>
         </html>
